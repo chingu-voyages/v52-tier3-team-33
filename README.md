@@ -35,7 +35,7 @@ your repo access and to practice PR'ing with your team *before* you start
 coding!
 
 - Emilia Burza: [GitHub](https://github.com/eburza) / [LinkedIn](https://linkedin.com/in/emilia-burza)
-- Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Trae Zeeofor: [GitHub](https://github.com/traez) / [LinkedIn](https://linkedin.com/in/traez)
 
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
