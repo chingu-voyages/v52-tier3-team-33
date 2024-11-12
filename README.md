@@ -36,6 +36,6 @@ coding!
 
 - Emilia Burza: [GitHub](https://github.com/eburza) / [LinkedIn](https://linkedin.com/in/emilia-burza)
 - Trae Zeeofor: [GitHub](https://github.com/traez) / [LinkedIn](https://linkedin.com/in/traez)
-
+- Maryam Hazrati: [GitHub](https://github.com/Maryamh12) / [LinkedIn](https://www.linkedin.com/in/maryam-hazratiii)
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
