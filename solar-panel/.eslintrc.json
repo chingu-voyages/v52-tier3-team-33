@@ -13,11 +13,46 @@
         "endOfLine": "auto", // Maintain consistent end of line behavior across environments
         "semi": false // Omit semicolons at the end of statements
       }
-    ] // Prevent conflicts between Prettier and Airbnb ESLint rules
+    ], // Prevent conflicts between Prettier and Airbnb ESLint rules
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/explicit-function-return-type": [
+      "warn",
+      {
+        "allowExpressions": true,
+        "allowTypedFunctionExpressions": true
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^react", "^next", "^@?\\w"],
+          ["^(@|components)(/.*|$)"],
+          ["^\\u0000"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          ["^.+\\.?(css)$"]
+        ]
+      }
+    ]
   },
   "settings": {
     "tailwindcss": {
       "callees": ["classnames", "clsx", "ctl", "cva", "tv", "cn"] // Tailwind utility class detection for specific libraries
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysShowStatus": true,
+        "project": "tsconfig.json"
+      }
     }
   },
   "overrides": [
@@ -39,7 +74,7 @@
       ],
       "parser": "@typescript-eslint/parser", // Uses TypeScript parser for ESLint
       "parserOptions": {
-        "project": "./tsconfig.json" // Ensures TypeScript is linted according to the project's tsconfig.json
+        "project": ["**/tsconfig.json"] // Ensures TypeScript is linted according to the project's tsconfig.json
       },
       "rules": {
         "prettier/prettier": [
@@ -76,7 +111,7 @@
           "WithStatement" // Disallow `with` statements
         ], // Override Airbnb configuration to restrict specific syntax
         "import/prefer-default-export": "off", // Allow named exports without preferring default exports
-        "simple-import-sort/imports": "error", // Enforce sorted imports
+        // "simple-import-sort/imports": "error", // Enforce sorted imports
         "simple-import-sort/exports": "error", // Enforce sorted exports
         "import/order": "off", // Disable import order rule to avoid conflict with simple-import-sort
         "@typescript-eslint/no-unused-vars": "off", // Disable unused variables rule for TypeScript
@@ -90,6 +125,26 @@
             "varsIgnorePattern": "^_", // Ignore variables starting with an underscore
             "args": "after-used", // Only warn about unused arguments if they appear after used ones
             "argsIgnorePattern": "^_" // Ignore arguments starting with an underscore
+          }
+        ],
+        "@typescript-eslint/explicit-function-return-type": [
+          "warn",
+          {
+            "allowExpressions": true,
+            "allowTypedFunctionExpressions": true
+          }
+        ],
+        "@typescript-eslint/no-explicit-any": "warn",
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              ["^react", "^@?\\w"],
+              ["^(@|components)(/.*|$)"],
+              ["^\\u0000"],
+              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+              ["^.+\\.?(css)$"]
+            ]
           }
         ]
       }
