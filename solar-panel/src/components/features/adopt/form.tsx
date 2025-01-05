@@ -14,7 +14,7 @@ import AdoptFormFields from "./form-fields";
 const formSchema = z.object({
   firstName: z.string().min(2).max(50),
   lastName: z.string().min(2).max(50),
-  age: z.string(), // Handling number values with zod and RHF is tricky. For now submit them as input and validate them as number in backend
+  age: z.string(),
   amount: z.string().min(1),
 });
 

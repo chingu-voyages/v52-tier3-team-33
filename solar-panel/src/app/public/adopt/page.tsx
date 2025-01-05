@@ -1,6 +1,6 @@
 "use client";
 
-import AdoptForm from "@/components/pages/adopt/form";
+import AdoptForm from "@/components/features/adopt/form";
 
 export default function Adopt() {
   return <AdoptForm />;
