@@ -13,10 +13,10 @@ import { Input } from "@/components/ui/input";
 import type { AdoptFormType } from "./form";
 
 interface Props {
-  form: UseFormReturn<AdoptFormType, any, undefined>;
+  form: UseFormReturn<AdoptFormType, undefined>;
 }
 
-export default function AdoptFormFields({ form }: Props) {
+export default function AdoptFormFields({ form }: Props): React.ReactNode {
   return (
     <>
       <FormField
