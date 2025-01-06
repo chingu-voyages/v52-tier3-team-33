@@ -40,6 +40,7 @@ next-env.d.ts
 /solar-panel/Directory-Structure.md
 
 #
-/config
-/supabase
+# *.config.js
+# *.config.ts
+# *.config.mjs
 /chingu-docs

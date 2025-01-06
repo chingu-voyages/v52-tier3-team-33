@@ -7,10 +7,9 @@
     "build": "next build",
     "start": "next start",
     "format": "next lint --fix && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
-    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint": "next lint",
     "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
-    "format:all": "npm run lint:fix && npm run format",
-    "lint": "next lint"
+    "format:all": "npm run lint:fix && npm run format"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.4.1",
@@ -58,7 +57,7 @@
     "postcss": "^8.4.49",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.8",
-    "tailwindcss": "^3.4.16",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.6.3",
     "vitest": "^2.1.4"
   }
