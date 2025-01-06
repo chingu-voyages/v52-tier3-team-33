@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .navigation-container {
+    @apply flex items-center justify-around py-1.5 px-2;
+  }
+
+  .nav-logo {
+    @apply flex items-center gap-2;
+  }
+
+  .nav-logo-icon {
+    @apply flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500 text-xl text-white;
+  }
+
+  .nav-logo-text {
+    @apply flex flex-col justify-around;
+  }
+
+  .nav-logo-text h1 {
+    @apply text-lg font-bold m-0;
+  }
+
+  .nav-logo-text h2 {
+    @apply text-sm text-gray-600 m-0;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -13,7 +39,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
 
-    --primary: 0 0% 9%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 0 0% 96.1%;
