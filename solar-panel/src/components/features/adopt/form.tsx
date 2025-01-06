@@ -20,9 +20,9 @@ const formSchema = z.object({
 
 export type AdoptFormType = z.infer<typeof formSchema>;
 
-export default function AdoptForm() {
+export default function AdoptForm(): JSX.Element {
   const { isSuccess, data, mutate, isPending } = useMutation({
-    mutationFn: (data: any) => {
+    mutationFn: (data: unknown) => {
       return axios.post("/api/adopt", data);
     },
   });
@@ -37,7 +37,7 @@ export default function AdoptForm() {
     },
   });
 
-  function onSubmit(values: AdoptFormType) {
+  function onSubmit(values: AdoptFormType): void {
     mutate(values);
   }
 
