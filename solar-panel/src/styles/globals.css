@@ -4,11 +4,14 @@
 
 @layer components {
 
+  /* Global styles */
   * {
     @apply box-border m-0 p-0;
   }
+
+  /* Header styles */
   .header {
-    @apply border-b border-gray-200 w-full m-0 p-0;
+    @apply w-full fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm h-16;
   }
 
   .navigation-container {
@@ -33,6 +36,19 @@
 
   .nav-logo-text h2 {
     @apply text-sm text-gray-600 m-0;
+  }
+
+  /* Main page styles */
+  .main {
+    @apply flex flex-col items-center justify-start w-full min-h-screen pt-[64px];
+  }
+
+  .main-section {
+    @apply flex flex-col items-center justify-center w-full px-4 py-8;
+  }
+
+  .hero {
+    @apply flex flex-col items-center justify-center min-h-[calc(50vh-64px)] w-full bg-gray-300 bg-[url('../../public/img/hero-img.png')] bg-cover bg-center;
   }
 }
 
