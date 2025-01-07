@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 @layer components {
+
+  * {
+    @apply box-border m-0 p-0;
+  }
+  .header {
+    @apply border-b border-gray-200 w-full m-0 p-0;
+  }
+
   .navigation-container {
-    @apply flex items-center justify-around py-1.5 px-2;
+    @apply flex items-center justify-between py-2 px-4 w-full max-w-full;
   }
 
   .nav-logo {
