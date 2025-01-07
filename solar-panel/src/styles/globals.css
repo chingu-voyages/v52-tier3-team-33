@@ -48,7 +48,19 @@
   }
 
   .hero {
-    @apply flex flex-col items-center justify-center min-h-[calc(50vh-64px)] w-full bg-gray-300 bg-[url('../../public/img/hero-img.png')] bg-cover bg-center;
+    @apply flex flex-col items-center justify-center min-h-80 max-h-96 w-full bg-gray-300 bg-[url('../../public/img/hero-img.png')] bg-cover bg-center;
+  }
+
+  .benefits {
+    @apply flex flex-col items-center justify-center min-h-80 max-h-96 w-full;
+  }
+
+  .process {
+    @apply flex flex-col items-center justify-center min-h-80 max-h-96 w-full  bg-gray-300;
+  }
+
+  .cta {
+    @apply flex flex-col items-center justify-center min-h-80 max-h-96 bg-gray-300;
   }
 }
 
