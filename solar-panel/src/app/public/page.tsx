@@ -11,6 +11,7 @@ export default function Main(): React.ReactNode {
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-start pt-[64px]">
       <Hero />
+      {/* TODO: Add SectionSecondaryNavigation if needed */}
       {/* <SectionSecondaryNavigation /> */}
       <Benefits />
       <Process />

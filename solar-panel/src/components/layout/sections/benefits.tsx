@@ -9,6 +9,7 @@ export default function Benefits(): React.ReactNode {
       <h1>Why Choose Solar Energy</h1>
       <p>Discover the advantages of switching to solar power</p>
       <div className="flex gap-6">
+        {/* TODO: Add images to cards */}
         <Card>
           <div>💰</div>
           {/* <img src="/images/benefits/save-money.png" alt="Save Money" /> */}
