@@ -9,7 +9,7 @@ import Process from "@/app/public/adopt/process";
 
 export default function Main(): React.ReactNode {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-start pt-[64px]">
+    <div className="flex min-h-screen w-full flex-col items-center justify-start">
       <Hero />
       {/* TODO: Add SectionSecondaryNavigation if needed */}
       {/* <SectionSecondaryNavigation /> */}

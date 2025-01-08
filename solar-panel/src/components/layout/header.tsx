@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Header(): React.ReactNode {
   return (
-    <header className="h-16; fixed inset-x-0 top-0 z-50 w-full bg-white/80 backdrop-blur-sm">
+    <header className="h-16 w-full bg-white backdrop-blur-sm">
       <div className="flex w-full max-w-full items-center justify-between px-4 py-2">
         <Link href="/" className="flex items-center gap-2">
           <div className="flex size-10 items-center justify-center rounded-lg bg-blue-500 text-xl text-white">
@@ -23,7 +23,7 @@ export default function Header(): React.ReactNode {
             <Link href="/auth/login/user">
               <Button variant="outline">Track Request</Button>
             </Link>
-            <Link href="/auth/login/user">
+            <Link href="/public/evaluate">
               <Button variant="default">Request Evaluation</Button>
             </Link>
           </div>

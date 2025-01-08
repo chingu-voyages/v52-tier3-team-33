@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 
 export default function CTA(): React.ReactNode {
@@ -8,7 +10,11 @@ export default function CTA(): React.ReactNode {
     >
       <h1>Ready to Get Started?</h1>
       <p>Schedule your free solar panel evaluation today</p>
-      <Button>Request Evaluation</Button>
+      <Link href="/public/evaluate">
+        <Button variant="default" size="lg">
+          Request Evaluation
+        </Button>
+      </Link>
     </section>
   );
 }
