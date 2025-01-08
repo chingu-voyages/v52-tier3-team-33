@@ -2,7 +2,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Benefits(): React.ReactNode {
   return (
-    <section className="benefits main-section" id="benefits">
+    <section
+      className="flex max-h-96 min-h-80 w-full flex-col items-center justify-center"
+      id="benefits"
+    >
       <h1>Why Choose Solar Energy</h1>
       <p>Discover the advantages of switching to solar power</p>
       <div className="flex gap-6">

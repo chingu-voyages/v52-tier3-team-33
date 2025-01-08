@@ -1,7 +1,7 @@
 export default function Footer(): React.ReactNode {
   return (
     <footer className="border-t p-4">
-      <div className=" flex flex-col gap-4 container py-4 text-center text-sm">
+      <div className=" flex flex-col gap-4 py-4 text-center text-sm">
         <div className="flex items-center justify-between">
           <div>
             <h3>About</h3>

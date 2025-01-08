@@ -2,7 +2,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Process(): React.ReactNode {
   return (
-    <section className="process main-section" id="process">
+    <section
+      className="flex max-h-96 min-h-80 w-full flex-col items-center justify-center  bg-gray-300"
+      id="process"
+    >
       <h1>How It Works</h1>
       <p>Simple steps to get your solar evaluation</p>
       <div className="flex gap-6">

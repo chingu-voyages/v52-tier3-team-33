@@ -9,7 +9,7 @@ import Process from "@/components/layout/sections/process";
 
 export default function Main(): React.ReactNode {
   return (
-    <div className="main">
+    <div className="flex min-h-screen w-full flex-col items-center justify-start pt-[64px]">
       <Hero />
       {/* <SectionSecondaryNavigation /> */}
       <Benefits />
