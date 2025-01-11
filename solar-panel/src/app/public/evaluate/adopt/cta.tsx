@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -24,9 +26,9 @@ export default function CTA(): React.ReactNode {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Button>
-            Start Evaluation Process <span>→</span>
-          </Button>
+          <Link href="/public/evaluate/form">
+            <Button variant="default">Start Evaluation Process →</Button>
+          </Link>
         </CardContent>
       </Card>
     </section>
