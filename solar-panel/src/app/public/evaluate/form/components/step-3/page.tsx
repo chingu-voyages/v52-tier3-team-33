@@ -1,4 +1,4 @@
-import CtaContainer from "../adopt/cta";
+import CtaContainer from "../adopt/form-navigation";
 import HeadContainer from "../adopt/head";
 
 export default function FormStepThree(): React.ReactNode {

@@ -16,10 +16,10 @@ export default function FormStepFour(): React.ReactNode {
       <p>step 4</p>
       <div className="flex gap-4">
         <Link href="/">
-          <Button>Return to Form</Button>
+          <Button variant="outline">Return to Form</Button>
         </Link>
         <Link href="/">
-          <Button>Submit Request</Button>
+          <Button variant="default">Submit Request</Button>
         </Link>
       </div>
     </section>
