@@ -11,7 +11,7 @@ export default function EvaluateForm(): React.ReactNode {
   return (
     <section className="flex size-full flex-col items-center justify-between gap-4 bg-gray-100">
       <StepsCounter />
-      <Card className="flex w-full flex-col gap-4">
+      <Card className="flex w-3/4 flex-col gap-4 p-4">
         <FormStepOne />
         <FormStepTwo />
         <FormStepThree />
