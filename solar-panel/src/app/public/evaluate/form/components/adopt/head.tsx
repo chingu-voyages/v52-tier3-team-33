@@ -1,8 +1,16 @@
-export default function HeadContainer(): React.ReactNode {
+type HeadContainerProps = {
+  title: string;
+  copy: string;
+};
+
+export default function HeadContainer({
+  title,
+  copy,
+}: HeadContainerProps): React.ReactNode {
   return (
     <div className="flex flex-col items-start justify-center gap-2">
-      <h1>Title</h1>
-      <p>copy</p>
+      <h1>{title}</h1>
+      <p>{copy}</p>
     </div>
   );
 }
