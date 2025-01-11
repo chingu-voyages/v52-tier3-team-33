@@ -1,10 +1,22 @@
+import { Card } from "@/components/ui/card";
+
 import SafeForLater from "./adopt/safe-for-later";
 import StepsCounter from "./adopt/steps-cunter";
+import FormStepOne from "./components/step-1/page";
+import FormStepTwo from "./components/step-2/page";
+import FormStepThree from "./components/step-3/page";
+import FormStepFour from "./components/step-4/page";
 
 export default function EvaluateForm(): React.ReactNode {
   return (
-    <section className="flex w-full h-screen flex-col items-center gap-2  bg-gray-100 relative">
+    <section className="flex size-full flex-col items-center justify-between gap-4 bg-gray-100">
       <StepsCounter />
+      <Card className="flex w-full flex-col gap-4">
+        <FormStepOne />
+        <FormStepTwo />
+        <FormStepThree />
+        <FormStepFour />
+      </Card>
       <SafeForLater />
     </section>
   );
