@@ -58,11 +58,7 @@ export const useEvaluationFormStore = create<EvaluationFormState>()(
             formData.roofAccess
           );
         case 3:
-          // eslint-disable-next-line prettier/prettier
-          return !!(
-												formData.date && 
-												formData.timeSlot
-										);
+          return !!(formData.date && formData.timeSlot);
         default:
           return false;
       }
