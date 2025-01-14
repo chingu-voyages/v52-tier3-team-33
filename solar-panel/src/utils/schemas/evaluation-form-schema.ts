@@ -59,7 +59,7 @@ export const FormStepThreeSchema = z.object({
     .optional(),
 });
 
-export const FormStepFourSchema = z.object({
+export const FormEvaluationSchema = z.object({
   ...FormStepOneSchema.shape,
   ...FormStepTwoSchema.shape,
   ...FormStepThreeSchema.shape,
@@ -68,4 +68,4 @@ export const FormStepFourSchema = z.object({
 export type StepOneType = z.infer<typeof FormStepOneSchema>;
 export type StepTwoType = z.infer<typeof FormStepTwoSchema>;
 export type StepThreeType = z.infer<typeof FormStepThreeSchema>;
-export type StepFourType = z.infer<typeof FormStepFourSchema>;
+export type FormEvaluationType = z.infer<typeof FormEvaluationSchema>;
