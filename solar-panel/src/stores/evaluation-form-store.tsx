@@ -29,27 +29,18 @@ export const useEvaluationFormStore = create<EvaluationFormState>()(
       }));
     },
 
-    updateCurrentStep: (step) => {
-      set((state) => ({
-        currentStep: step,
-      }));
-    },
+    updateCurrentStep: (step) => set({ currentStep: step }),
 
-    resetForm: () => {
-      set((state) => ({
+    resetForm: () =>
+      set({
         formData: {},
         currentStep: 1,
         isSubmitted: false,
-      }));
-    },
+      }),
 
-    updateIsSubmitted(status) {
-      set((state) => ({
-        isSubmitted: status,
-      }));
-    },
+    updateIsSubmitted: (status) => set({ isSubmitted: status }),
 
-    isStepValid(step) {
+    isStepValid: (step) => {
       const { formData } = get();
 
       switch (step) {
