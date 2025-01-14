@@ -1,5 +1,6 @@
 import CtaContainer from "../adopt/form-navigation";
 import HeadContainer from "../adopt/head";
+import StepThreeFormFields from "./form-fields";
 
 export default function FormStepThree(): React.ReactNode {
   return (
@@ -8,7 +9,7 @@ export default function FormStepThree(): React.ReactNode {
         title="Schedule Evaluation"
         copy="Choose your preferred date and time"
       />
-      <p>step 3</p>
+      <StepThreeFormFields />
       <CtaContainer />
     </section>
   );
