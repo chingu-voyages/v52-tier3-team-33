@@ -18,6 +18,7 @@ import {
   FormStepTwoSchema,
   type StepTwoType,
 } from "@/utils/schemas/evaluation-form-schema";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function StepTwoFormFields(): React.ReactNode {
   const { formData, updateFormData } = useEvaluationFormStore();
@@ -85,8 +86,9 @@ export default function StepTwoFormFields(): React.ReactNode {
             <FormItem>
               <FormLabel>Additional Property Details</FormLabel>
               <FormControl>
-                <Input
+              <Textarea
                   placeholder="Any special instructions for accessing the property..."
+                  className="min-h-24"
                   {...field}
                 />
               </FormControl>

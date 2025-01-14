@@ -17,6 +17,7 @@ import {
   FormStepThreeSchema,
   type StepThreeType,
 } from "@/utils/schemas/evaluation-form-schema";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function StepThreeFormFields(): React.ReactNode {
   const { formData, updateFormData } = useEvaluationFormStore();
@@ -74,7 +75,11 @@ export default function StepThreeFormFields(): React.ReactNode {
             <FormItem>
               <FormLabel>Additional Notes</FormLabel>
               <FormControl>
-                <Input placeholder="Any special instructions?" {...field} />
+                <Textarea
+                  placeholder="Any special instructions?"
+                  className="min-h-24"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
