@@ -24,6 +24,10 @@ export const FormStepTwoSchema = z.object({
     .string()
     .min(1, { message: "Street address is required" })
     .min(5, { message: "Street address must be at least 5 characters" }),
+  coordinates: z.object({
+    lat: z.number(),
+    lng: z.number(),
+  }).optional(),
   propertyType: z.enum(["Single Family", "Multi Family", "Commercial"], {
     message: "Please select a property type",
   }),
