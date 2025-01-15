@@ -4,6 +4,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+} from "@/components/ui/dropdown-select";
+import {
   Form,
   FormControl,
   FormDescription,
@@ -59,9 +65,16 @@ export default function StepTwoFormFields(): React.ReactNode {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Property Type</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <SelectTrigger>
+                  {field.value || "Select Property Type"}
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="SingleFamily">SingleFamily</SelectItem>
+                  <SelectItem value="MultiFamily">MultiFamily</SelectItem>
+                  <SelectItem value="Commercial">Commercial</SelectItem>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -72,9 +85,18 @@ export default function StepTwoFormFields(): React.ReactNode {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Roof Access</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <SelectTrigger>
+                  {field.value || "Select Roof Access"}
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="EasyAccess">Easy Access</SelectItem>
+                  <SelectItem value="Limited Access">Limited Access</SelectItem>
+                  <SelectItem value="Needs Special Equipment">
+                    Needs Special Equipment
+                  </SelectItem>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -86,7 +108,7 @@ export default function StepTwoFormFields(): React.ReactNode {
             <FormItem>
               <FormLabel>Additional Property Details</FormLabel>
               <FormControl>
-              <Textarea
+                <Textarea
                   placeholder="Any special instructions for accessing the property..."
                   className="min-h-24"
                   {...field}
