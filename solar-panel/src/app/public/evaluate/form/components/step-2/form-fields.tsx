@@ -26,6 +26,7 @@ import {
   FormStepTwoSchema,
   type StepTwoType,
 } from "@/utils/schemas/evaluation-form-schema";
+import AddressSearch from "@/components/ui/address-search";
 
 export default function StepTwoFormFields(): React.ReactNode {
   const { formData, updateFormData } = useEvaluationFormStore();
@@ -54,7 +55,21 @@ export default function StepTwoFormFields(): React.ReactNode {
             <FormItem>
               <FormLabel>Street Address</FormLabel>
               <FormControl>
-                <Input placeholder="Start typing to search..." {...field} />
+                <AddressSearch
+                  value={field.value}
+                  onChange={(value, coordinates) => {
+                    field.onChange(value);
+                    if (coordinates) {
+                      updateFormData({
+                        ...formData,
+                        coordinates: {
+                          lat: coordinates.lat,
+                          lng: coordinates.lng,
+                        },
+                      });
+                    }
+                  }}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
