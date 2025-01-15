@@ -1,3 +1,5 @@
+"use client";
+
 import { Card } from "@/components/ui/card";
 
 import SafeForLater from "./adopt/safe-for-later";
