@@ -12,6 +12,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  RadioGroupButtonItem,
+  RadioGroupButtons,
+} from "@/components/ui/radio-buttons";
 import { Textarea } from "@/components/ui/textarea";
 import { useEvaluationFormStore } from "@/stores/evaluation-form-store";
 import {
@@ -62,7 +66,27 @@ export default function StepThreeFormFields(): React.ReactNode {
             <FormItem>
               <FormLabel>Available Time Slots</FormLabel>
               <FormControl>
-                <Input placeholder="Select a time slot" {...field} />
+                <RadioGroupButtons
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="grid grid-cols-2 gap-2 md:grid-cols-3"
+                >
+                  <RadioGroupButtonItem value="9:00AM-11:00AM">
+                    9:00AM-11:00AM
+                  </RadioGroupButtonItem>
+                  <RadioGroupButtonItem value="11:00AM-1:00PM">
+                    11:00AM-1:00PM
+                  </RadioGroupButtonItem>
+                  <RadioGroupButtonItem value="1:00PM-3:00PM">
+                    1:00PM-3:00PM
+                  </RadioGroupButtonItem>
+                  <RadioGroupButtonItem value="3:00PM-5:00PM">
+                    3:00PM-5:00PM
+                  </RadioGroupButtonItem>
+                  <RadioGroupButtonItem value="5:00PM-7:00PM">
+                    5:00PM-7:00PM
+                  </RadioGroupButtonItem>
+                </RadioGroupButtons>
               </FormControl>
               <FormMessage />
             </FormItem>
