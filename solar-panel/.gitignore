@@ -44,3 +44,6 @@ next-env.d.ts
 # *.config.ts
 # *.config.mjs
 /chingu-docs
+.env.local
+.env.development
+.env.production
