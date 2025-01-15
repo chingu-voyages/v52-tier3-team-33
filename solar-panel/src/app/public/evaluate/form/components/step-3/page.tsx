@@ -2,12 +2,11 @@
 
 import { useEvaluationFormStore } from "@/stores/evaluation-form-store";
 
-import CtaContainer from "../adopt/form-navigation";
 import HeadContainer from "../adopt/head";
 import StepThreeFormFields from "./form-fields";
 
 export default function FormStepThree(): React.ReactNode {
-  const { currentStep, isStepValid } = useEvaluationFormStore();
+  const { currentStep } = useEvaluationFormStore();
 
   if (currentStep !== 3) return null;
 
@@ -18,7 +17,6 @@ export default function FormStepThree(): React.ReactNode {
         copy="Choose your preferred date and time"
       />
       <StepThreeFormFields />
-      <CtaContainer currentStep={3} canProceed={isStepValid(3)} />
     </section>
   );
 }

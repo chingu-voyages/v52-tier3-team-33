@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import CtaContainer from "../adopt/form-navigation";
 import {
   Form,
   FormControl,
@@ -37,7 +38,7 @@ export default function StepThreeFormFields(): React.ReactNode {
 
   function onSubmit(values: StepThreeType): void {
     updateFormData(values);
-  }
+  };
 
   return (
     <Form {...form}>
@@ -109,6 +110,7 @@ export default function StepThreeFormFields(): React.ReactNode {
             </FormItem>
           )}
         />
+        <CtaContainer currentStep={3} canProceed={form.formState.isValid} />
       </form>
     </Form>
   );

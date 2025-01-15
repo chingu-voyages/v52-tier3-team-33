@@ -2,12 +2,11 @@
 
 import { useEvaluationFormStore } from "@/stores/evaluation-form-store";
 
-import CtaContainer from "../adopt/form-navigation";
 import HeadContainer from "../adopt/head";
 import StepTwoFormFields from "./form-fields";
 
 export default function FormStepOne(): React.ReactNode {
-  const { currentStep, isStepValid } = useEvaluationFormStore();
+  const { currentStep } = useEvaluationFormStore();
 
   if (currentStep !== 2) return null;
 
@@ -18,7 +17,6 @@ export default function FormStepOne(): React.ReactNode {
         copy="Tell us about your property"
       />
       <StepTwoFormFields />
-      <CtaContainer currentStep={2} canProceed={isStepValid(2)} />
     </section>
   );
 }

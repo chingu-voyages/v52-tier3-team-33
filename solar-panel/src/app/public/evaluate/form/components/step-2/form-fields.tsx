@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import CtaContainer from "../adopt/form-navigation";
 import {
   Select,
   SelectContent,
@@ -41,7 +42,7 @@ export default function StepTwoFormFields(): React.ReactNode {
 
   function onSubmit(values: StepTwoType): void {
     updateFormData(values);
-  }
+  };
 
   return (
     <Form {...form}>
@@ -122,6 +123,7 @@ export default function StepTwoFormFields(): React.ReactNode {
             </FormItem>
           )}
         />
+        <CtaContainer currentStep={2} canProceed={form.formState.isValid} />
       </form>
     </Form>
   );
