@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -53,13 +54,15 @@ export default function FormStepFour(): React.ReactNode {
         >
           Return to Form
         </Button>
-        <Button
-          variant="default"
-          onClick={handleSubmit}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? "Submitting..." : "Submit Request"}
-        </Button>
+        <Link href="/public/evaluate/form/success">
+          <Button
+            variant="default"
+            onClick={handleSubmit}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Submitting..." : "Submit Request"}
+          </Button>
+        </Link>
       </div>
     </section>
   );
