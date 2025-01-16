@@ -20,14 +20,14 @@ export default function Header(): React.ReactNode {
 
         <nav className="flex">
           <div className="flex gap-4 border-r pr-2">
-            <Link href="/auth/login/user">
+            <Link href="/public/evaluate">
               <Button variant="outline">Track Request</Button>
             </Link>
             <Link href="/public/evaluate">
               <Button variant="default">Request Evaluation</Button>
             </Link>
           </div>
-          <Link href="/auth/register/user" className="pl-2">
+          <Link href="/admin/auth/login" className="pl-2">
             <Button variant="secondaryOutline" className="admin-login-btn">
               Admin Login
             </Button>

@@ -39,7 +39,6 @@ export default function StepThreeFormFields(): React.ReactNode {
   });
 
   function onSubmit(values: StepThreeType): void {
-    console.log("Step 3 submitting:", values);
     updateFormData(values);
     if (form.formState.isValid) {
       updateCurrentStep(4);

@@ -43,7 +43,6 @@ export default function StepTwoFormFields(): React.ReactNode {
   });
 
   function onSubmit(values: StepTwoType): void {
-    console.log("Step 2 submitting:", values);
     updateFormData(values);
     if (form.formState.isValid) {
       updateCurrentStep(3);
