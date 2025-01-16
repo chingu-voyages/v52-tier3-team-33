@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import CtaContainer from "../adopt/form-navigation";
+import AddressSearch from "@/components/ui/address-search";
 import {
   Select,
   SelectContent,
@@ -19,17 +19,18 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useEvaluationFormStore } from "@/stores/evaluation-form-store";
 import {
   FormStepTwoSchema,
   type StepTwoType,
 } from "@/utils/schemas/evaluation-form-schema";
-import AddressSearch from "@/components/ui/address-search";
+
+import CtaContainer from "../adopt/form-navigation";
 
 export default function StepTwoFormFields(): React.ReactNode {
-  const { formData, updateFormData } = useEvaluationFormStore();
+  const { formData, updateFormData, updateCurrentStep } =
+    useEvaluationFormStore();
 
   const form = useForm<StepTwoType>({
     resolver: zodResolver(FormStepTwoSchema),
@@ -42,12 +43,20 @@ export default function StepTwoFormFields(): React.ReactNode {
   });
 
   function onSubmit(values: StepTwoType): void {
+    console.log("Step 2 submitting:", values);
     updateFormData(values);
-  };
+    if (form.formState.isValid) {
+      updateCurrentStep(3);
+    }
+  }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form
+        id="step-2-form"
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6"
+      >
         <FormField
           control={form.control}
           name="streetAddress"

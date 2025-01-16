@@ -25,7 +25,10 @@ export const useEvaluationFormStore = create<EvaluationFormState>()(
 
     updateFormData: (data) => {
       set((state) => ({
-        formData: { ...state.formData, ...data },
+        formData: {
+          ...state.formData,
+          ...data,
+        },
       }));
     },
 

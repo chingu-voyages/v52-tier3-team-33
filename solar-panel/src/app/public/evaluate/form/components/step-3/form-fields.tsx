@@ -26,7 +26,8 @@ import {
 import CtaContainer from "../adopt/form-navigation";
 
 export default function StepThreeFormFields(): React.ReactNode {
-  const { formData, updateFormData } = useEvaluationFormStore();
+  const { formData, updateFormData, updateCurrentStep } =
+    useEvaluationFormStore();
 
   const form = useForm<StepThreeType>({
     resolver: zodResolver(FormStepThreeSchema),
@@ -38,12 +39,20 @@ export default function StepThreeFormFields(): React.ReactNode {
   });
 
   function onSubmit(values: StepThreeType): void {
+    console.log("Step 3 submitting:", values);
     updateFormData(values);
+    if (form.formState.isValid) {
+      updateCurrentStep(4);
+    }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form
+        id="step-3-form"
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6"
+      >
         <FormField
           control={form.control}
           name="date"

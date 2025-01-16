@@ -1,10 +1,18 @@
 "use client";
 
+import { useEffect } from "react";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useEvaluationFormStore } from "@/stores/evaluation-form-store";
 
 export default function StepFourFormFields(): React.ReactNode {
   const { formData } = useEvaluationFormStore();
+
+  console.log("Form Data in Step 4:", formData); // Add this line
+
+  useEffect(() => {
+    console.log("Complete Form Data:", formData);
+  }, [formData]);
 
   const formSections = [
     {

@@ -3,7 +3,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import CtaContainer from "../adopt/form-navigation";
 import {
   Form,
   FormControl,
@@ -20,8 +19,11 @@ import {
   type StepOneType,
 } from "@/utils/schemas/evaluation-form-schema";
 
+import CtaContainer from "../adopt/form-navigation";
+
 export default function StepOneFormFields(): React.ReactNode {
-  const { formData, updateFormData } = useEvaluationFormStore();
+  const { formData, updateFormData, updateCurrentStep } =
+    useEvaluationFormStore();
 
   const form = useForm<StepOneType>({
     resolver: zodResolver(FormStepOneSchema),
@@ -34,12 +36,20 @@ export default function StepOneFormFields(): React.ReactNode {
   });
 
   function onSubmit(values: StepOneType): void {
+    console.log("Step 1 submitting:", values);
     updateFormData(values);
-  };
+    if (form.formState.isValid) {
+      updateCurrentStep(2);
+    }
+  }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form
+        id="step-1-form"
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6"
+      >
         <FormField
           control={form.control}
           name="firstName"
@@ -76,7 +86,7 @@ export default function StepOneFormFields(): React.ReactNode {
                 <Input placeholder="Enter your email" {...field} />
               </FormControl>
               <FormDescription>
-                We'll send confirmation and updates to this email
+                We&apos;ll send confirmation and updates to this email
               </FormDescription>
               <FormMessage />
             </FormItem>

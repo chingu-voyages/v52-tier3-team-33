@@ -13,6 +13,7 @@ export default function FormNavigation({
   canProceed,
 }: Props): React.ReactNode {
   const { updateCurrentStep } = useEvaluationFormStore();
+  const formId = `step-${currentStep}-form`;
 
   return (
     <div className="flex w-full items-center justify-between gap-2">
@@ -28,9 +29,10 @@ export default function FormNavigation({
         )}
         {currentStep < 4 && (
           <Button
+            type="submit"
+            form={formId}
             variant="default"
             disabled={!canProceed}
-            onClick={() => updateCurrentStep(currentStep + 1)}
           >
             Next Step
           </Button>
