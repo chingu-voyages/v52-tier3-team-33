@@ -3,7 +3,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import CtaContainer from "../adopt/form-navigation";
 import {
   Form,
   FormControl,
@@ -24,6 +23,8 @@ import {
   type StepThreeType,
 } from "@/utils/schemas/evaluation-form-schema";
 
+import CtaContainer from "../adopt/form-navigation";
+
 export default function StepThreeFormFields(): React.ReactNode {
   const { formData, updateFormData } = useEvaluationFormStore();
 
@@ -38,7 +39,7 @@ export default function StepThreeFormFields(): React.ReactNode {
 
   function onSubmit(values: StepThreeType): void {
     updateFormData(values);
-  };
+  }
 
   return (
     <Form {...form}>
@@ -53,7 +54,13 @@ export default function StepThreeFormFields(): React.ReactNode {
                 <Input
                   type="date"
                   {...field}
-                  value={field.value?.toISOString().split("T")[0]}
+                  value={
+                    field.value ? field.value.toISOString().split("T")[0] : ""
+                  }
+                  onChange={(e) => {
+                    const date = new Date(e.target.value);
+                    field.onChange(date);
+                  }}
                 />
               </FormControl>
               <FormMessage />
