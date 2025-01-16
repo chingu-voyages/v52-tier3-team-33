@@ -95,8 +95,8 @@ export default function StepTwoFormFields(): React.ReactNode {
                   {field.value || "Select Property Type"}
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="SingleFamily">SingleFamily</SelectItem>
-                  <SelectItem value="MultiFamily">MultiFamily</SelectItem>
+                  <SelectItem value="Single Family">SingleFamily</SelectItem>
+                  <SelectItem value="Multi Family">MultiFamily</SelectItem>
                   <SelectItem value="Commercial">Commercial</SelectItem>
                 </SelectContent>
               </Select>
@@ -115,7 +115,7 @@ export default function StepTwoFormFields(): React.ReactNode {
                   {field.value || "Select Roof Access"}
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="EasyAccess">Easy Access</SelectItem>
+                  <SelectItem value="Easy Access">Easy Access</SelectItem>
                   <SelectItem value="Limited Access">Limited Access</SelectItem>
                   <SelectItem value="Needs Special Equipment">
                     Needs Special Equipment
