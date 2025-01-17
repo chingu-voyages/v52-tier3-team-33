@@ -24,12 +24,13 @@ export const useEvaluationFormStore = create<EvaluationFormState>()(
     isSubmitted: false,
 
     updateFormData: (data) => {
-      set((state) => ({
-        formData: {
+      set((state) => {
+        const newFormData = {
           ...state.formData,
           ...data,
-        },
-      }));
+        };
+        return { formData: newFormData };
+      });
     },
 
     updateCurrentStep: (step) => set({ currentStep: step }),

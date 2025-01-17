@@ -2,49 +2,75 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-import { FormEvaluationSchema } from "@/utils/schemas/evaluation-form-schema";
-
 export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    // Validate request body
-    const validatedData = FormEvaluationSchema.parse(body);
-
-    // Initialize Supabase client
     const supabase = createRouteHandlerClient({ cookies });
 
-    // Insert data into evaluation_requests table
-    const { data, error } = await supabase
-      .from("evaluation_requests")
-      .insert([
-        {
-          first_name: validatedData.firstName,
-          last_name: validatedData.lastName,
-          email: validatedData.email,
-          phone: validatedData.phone,
-          street_address: validatedData.streetAddress,
-          coordinates: validatedData.coordinates,
-          property_type: validatedData.propertyType,
-          roof_access: validatedData.roofAccess,
-          additional_location: validatedData.additionalLocation,
-          appointment_date: validatedData.date,
-          time_slot: validatedData.timeSlot,
-          additional_notes: validatedData.additionalNotes,
-        },
-      ])
-      .select()
-      .single();
+    const appointmentDate = new Date(body.date);
+    const formattedDate = appointmentDate.toISOString().split('T')[0];
 
-    if (error) {
-      throw error;
+    const coordinates = body.coordinates ? 
+      `{"lat": ${body.coordinates.lat}, "lng": ${body.coordinates.lng}}` : 
+      null;
+
+    const insertData = {
+      first_name: String(body.firstName),
+      last_name: String(body.lastName),
+      email: String(body.email),
+      phone: String(body.phone).replace(/\D/g, ''),
+      street_address: String(body.streetAddress).replace(/'/g, "''"),
+      property_type: String(body.propertyType),
+      roof_access: String(body.roofAccess),
+      appointment_date: formattedDate,
+      time_slot: String(body.timeSlot),
+      status: 'pending',
+      coordinates,
+      additional_location: body.additionalLocation ? String(body.additionalLocation).replace(/'/g, "''") : null,
+      additional_notes: body.additionalNotes ? String(body.additionalNotes).replace(/'/g, "''") : null
+    };
+
+    const { error: testError } = await supabase
+      .from("evaluation_requests")
+      .select()
+      .limit(1);
+
+    if (testError) {
+      console.error("Table structure error:", testError);
+      return NextResponse.json(
+        { error: "Database configuration error", details: testError.message },
+        { status: 500 }
+      );
     }
 
-    return NextResponse.json(data);
+    const { data, error } = await supabase
+      .from("evaluation_requests")
+      .insert([insertData])
+      .select();
+
+    if (error) {
+      console.error("Insert error:", error);
+      return NextResponse.json(
+        { 
+          error: "Failed to save request", 
+          details: error.message,
+          data: insertData
+        },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json({ 
+      success: true, 
+      data,
+      message: "Evaluation request submitted successfully" 
+    });
+
   } catch (error) {
-    console.error("Error saving evaluation request:", error);
+    console.error("Server error:", error);
     return NextResponse.json(
-      { error: "Failed to save evaluation request" },
+      { error: "Server error", details: String(error) },
       { status: 500 }
     );
   }

@@ -36,7 +36,6 @@ export default function StepOneFormFields(): React.ReactNode {
   });
 
   function onSubmit(values: StepOneType): void {
-    console.log("Step 1 submitting:", values);
     updateFormData(values);
     if (form.formState.isValid) {
       updateCurrentStep(2);

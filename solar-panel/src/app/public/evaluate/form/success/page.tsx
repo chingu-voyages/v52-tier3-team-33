@@ -1,16 +1,26 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useEvaluationFormStore } from "@/stores/evaluation-form-store";
 
 export default function FormSuccess(): React.ReactNode {
+  const router = useRouter();
+  const { resetForm } = useEvaluationFormStore();
+
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
+
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-gray-100 p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">
+          <CardTitle className="text-2xl text-emerald-500">
             Request Submitted Successfully!
           </CardTitle>
         </CardHeader>
@@ -34,9 +44,12 @@ export default function FormSuccess(): React.ReactNode {
             </ul>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-center gap-4">
             <Link href="/">
               <Button variant="default">Return to Home</Button>
+            </Link>
+            <Link href="/public/evaluate">
+              <Button variant="outline">New Evaluation</Button>
             </Link>
           </div>
         </CardContent>

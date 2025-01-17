@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -14,31 +13,39 @@ import StepFourFormFields from "./form-fields";
 
 export default function FormStepFour(): React.ReactNode {
   const router = useRouter();
-
-  const { currentStep, updateCurrentStep, formData, resetForm } =
-    useEvaluationFormStore();
-
+  const { currentStep, formData, resetForm, updateCurrentStep } = useEvaluationFormStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { mutate } = useMutation({
     mutationFn: async (data: typeof formData) => {
-      return axios.post("/api/evaluation-requests", data);
+      const response = await axios.post("/api/submit", data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
     },
     onSuccess: () => {
-      resetForm();
+      setIsSubmitting(false);
       router.push("/public/evaluate/form/success");
     },
-    onError: () => {
+    onError: (error: any) => {
+      console.error("Submission error:", {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status
+      });
       setIsSubmitting(false);
     },
   });
 
-  if (currentStep !== 4) return null;
-
-  const handleSubmit = async () => {
+  const handleSubmit = async (): Promise<void> => {
     setIsSubmitting(true);
     mutate(formData);
   };
+
+  if (currentStep !== 4) return null;
+
   return (
     <section className="flex w-full flex-col gap-4">
       <HeadContainer
@@ -54,15 +61,19 @@ export default function FormStepFour(): React.ReactNode {
         >
           Return to Form
         </Button>
-        <Link href="/public/evaluate/form/success">
-          <Button
-            variant="default"
-            onClick={handleSubmit}
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "Submitting..." : "Submit Request"}
-          </Button>
-        </Link>
+        <Button 
+          onClick={handleSubmit}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <span className="flex items-center gap-2">
+              <span className="animate-spin">⏳</span>
+              Submitting...
+            </span>
+          ) : (
+            'Submit Request'
+          )}
+        </Button>
       </div>
     </section>
   );
