@@ -20,7 +20,7 @@ export default function Header(): React.ReactNode {
 
         <nav className="flex">
           <div className="flex gap-4 border-r pr-2">
-            <Link href="/public/evaluate">
+            <Link href="/public/track">
               <Button variant="outline">Track Request</Button>
             </Link>
             <Link href="/public/evaluate">
