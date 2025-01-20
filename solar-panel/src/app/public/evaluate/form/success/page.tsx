@@ -11,6 +11,7 @@ import { useEvaluationFormStore } from "@/stores/evaluation-form-store";
 export default function FormSuccess(): React.ReactNode {
   const router = useRouter();
   const { resetForm } = useEvaluationFormStore();
+  const requestId = "EVL-2024-001";
 
   useEffect(() => {
     resetForm();
@@ -25,14 +26,19 @@ export default function FormSuccess(): React.ReactNode {
           </CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-6">
-          <div className="text-center text-gray-600">
-            <p className="mb-2">
+          <div className="text-center">
+            <p className="mb-4 text-gray-600">
               Thank you for submitting your solar evaluation request.
             </p>
-            <p>
-              We will review your information and contact you shortly to confirm
-              your appointment.
-            </p>
+            <div className="rounded-lg bg-gray-50 p-4">
+              <p className="mb-2 font-medium">Your Request ID:</p>
+              <code className="rounded bg-gray-200 px-2 py-1 text-lg font-bold">
+                {requestId}
+              </code>
+              <p className="mt-2 text-sm text-gray-600">
+                Save this ID to track your request status
+              </p>
+            </div>
           </div>
 
           <div className="flex flex-col gap-2">
@@ -46,10 +52,10 @@ export default function FormSuccess(): React.ReactNode {
 
           <div className="flex justify-center gap-4">
             <Link href="/">
-              <Button variant="default">Return to Home</Button>
+              <Button variant="outline">Return to Home</Button>
             </Link>
-            <Link href="/public/evaluate">
-              <Button variant="outline">New Evaluation</Button>
+            <Link href="/public/track">
+              <Button variant="default">Track Request</Button>
             </Link>
           </div>
         </CardContent>
