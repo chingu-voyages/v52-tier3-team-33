@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/stores/auth-store";
 
 export default function AdminSidebar(): React.ReactNode {
   const router = useRouter();
+  const pathname = usePathname();
   const { logout } = useAuthStore();
 
   const handleLogout = async (): Promise<void> => {
@@ -19,38 +20,42 @@ export default function AdminSidebar(): React.ReactNode {
     }
   };
 
+  const navItems = [
+    { href: "/admin/dashboard", label: "Dashboard" },
+    { href: "/admin/evaluation", label: "Evaluations" },
+  ];
+
   return (
-    <aside className="w-64 bg-gray-800 p-6 text-white">
-      <div className="flex h-full flex-col justify-between">
-        <div className="space-y-6">
-          <h2 className="text-xl font-bold">Admin Panel</h2>
+    <aside className="flex h-full flex-col bg-gray-800 p-6 text-white">
+      <div className="space-y-6">
+        <h2 className="text-xl font-bold">Admin Panel</h2>
 
-          <nav className="space-y-2">
+        <nav className="space-y-2">
+          {navItems.map((item) => (
             <Link
-              href="/admin/dashboard"
-              className="block rounded px-4 py-2 hover:bg-gray-700"
+              key={item.href}
+              href={item.href}
+              className={`block rounded-lg px-4 py-2 transition-colors ${
+                pathname === item.href
+                  ? "bg-gray-700 text-white"
+                  : "text-gray-300 hover:bg-gray-700/50 hover:text-white"
+              }`}
             >
-              Dashboard
+              {item.label}
             </Link>
-            <Link
-              href="/admin/evaluation"
-              className="block rounded px-4 py-2 hover:bg-gray-700"
-            >
-              Evaluations
-            </Link>
-          </nav>
-        </div>
+          ))}
+        </nav>
+      </div>
 
-        <div className="pt-6">
-          <Button
-            variant="destructive"
-            className="w-full"
-            onClick={handleLogout}
-            type="button"
-          >
-            Logout
-          </Button>
-        </div>
+      <div className="mt-auto pt-6">
+        <Button
+          variant="destructive"
+          className="w-full"
+          onClick={handleLogout}
+          type="button"
+        >
+          Logout
+        </Button>
       </div>
     </aside>
   );
