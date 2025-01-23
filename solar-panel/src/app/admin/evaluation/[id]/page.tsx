@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useParams } from "next/navigation";
+import { ChevronLeft } from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -60,6 +61,7 @@ const getStatusClasses = (status: Status | undefined) => {
 
 export default function EvaluationDetailPage(): React.ReactNode {
   const params = useParams();
+  const router = useRouter();
   const evaluationId = params.id as string;
   const [evaluation, setEvaluation] = useState<Evaluation | null>(null);
   const [loading, setLoading] = useState(true);
@@ -142,19 +144,29 @@ export default function EvaluationDetailPage(): React.ReactNode {
   if (!evaluation) return <div>Evaluation not found</div>;
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold">
-            Evaluation Request {evaluationId}
-          </h1>
-          <p className="text-muted-foreground">
-            Review and manage evaluation details
-          </p>
-        </div>
-        <div className="flex gap-2">
-          <Button variant="outline">Reject</Button>
-          <Button variant="default">Approve</Button>
+    <div className="space-y-8 p-8">
+      <div>
+        <Button
+          variant="ghost"
+          className="mb-6 flex items-center gap-2 hover:bg-gray-100"
+          onClick={() => router.push("/admin/evaluation")}
+        >
+          <ChevronLeft className="size-4" />
+          Back to Evaluations
+        </Button>
+
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold">Evaluation Details</h1>
+            <p className="text-muted-foreground">
+              Request ID: EVL-{evaluation.id}
+            </p>
+          </div>
+          <div className="inline-flex items-center rounded-lg bg-gray-100 px-3 py-1">
+            <span className="text-sm font-medium capitalize">
+              {evaluation.status || "pending"}
+            </span>
+          </div>
         </div>
       </div>
 
@@ -167,15 +179,15 @@ export default function EvaluationDetailPage(): React.ReactNode {
           <CardContent className="space-y-4">
             <div>
               <p className="text-sm font-medium text-gray-500">Name</p>
-              <p>{`${evaluation?.first_name} ${evaluation?.last_name}`}</p>
+              <p className="mt-1">{`${evaluation.first_name} ${evaluation.last_name}`}</p>
             </div>
             <div>
               <p className="text-sm font-medium text-gray-500">Email</p>
-              <p>{evaluation?.email}</p>
+              <p className="mt-1">{evaluation.email}</p>
             </div>
             <div>
               <p className="text-sm font-medium text-gray-500">Phone</p>
-              <p>{evaluation?.phone}</p>
+              <p className="mt-1">{evaluation.phone}</p>
             </div>
           </CardContent>
         </Card>
@@ -187,47 +199,55 @@ export default function EvaluationDetailPage(): React.ReactNode {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <p className="text-sm font-medium text-gray-500">Type</p>
-              <p>{evaluation?.property_type}</p>
+              <p className="text-sm font-medium text-gray-500">Address</p>
+              <p className="mt-1">{evaluation.street_address}</p>
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-500">Address</p>
-              <p>{evaluation?.street_address}</p>
+              <p className="text-sm font-medium text-gray-500">Property Type</p>
+              <p className="mt-1">{evaluation.property_type}</p>
             </div>
             <div>
               <p className="text-sm font-medium text-gray-500">
                 Additional Location Info
               </p>
-              <p>
-                {evaluation?.additional_location ||
+              <p className="mt-1">
+                {evaluation.additional_location ||
                   "No additional notes provided"}
               </p>
             </div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="md:col-span-2">
           <CardHeader>
-            <CardTitle>Preferred Schedule</CardTitle>
-            <CardDescription>
-              Customer&apos;s requested date and time
-            </CardDescription>
+            <CardTitle>Appointment Details</CardTitle>
+            <CardDescription>Scheduled time and notes</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div>
-              <p className="text-sm font-medium text-gray-500">Date</p>
-              <p>{evaluation?.appointment_date}</p>
-            </div>
-            <div>
-              <p className="text-sm font-medium text-gray-500">Time</p>
-              <p>{evaluation?.time_slot}</p>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div>
+                <p className="text-sm font-medium text-gray-500">
+                  Preferred Date
+                </p>
+                <p className="mt-1">
+                  {evaluation.appointment_date
+                    ? new Date(evaluation.appointment_date).toLocaleDateString()
+                    : "Not specified"}
+                </p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-500">Time Slot</p>
+                <p className="mt-1">
+                  {evaluation.time_slot || "Not specified"}
+                </p>
+              </div>
             </div>
             <div>
               <p className="text-sm font-medium text-gray-500">
                 Additional Notes
               </p>
-              <p className="text-sm text-gray-600">
-                {evaluation?.additional_notes || "No additional notes provided"}
+              <p className="mt-1">
+                {evaluation.additional_notes || "No additional notes provided"}
               </p>
             </div>
           </CardContent>
