@@ -13,14 +13,15 @@ import StepFourFormFields from "./form-fields";
 
 export default function FormStepFour(): React.ReactNode {
   const router = useRouter();
-  const { currentStep, formData, resetForm, updateCurrentStep } = useEvaluationFormStore();
+  const { currentStep, formData, resetForm, updateCurrentStep } =
+    useEvaluationFormStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { mutate } = useMutation({
     mutationFn: async (data: typeof formData) => {
       const response = await axios.post("/api/submit", data, {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
       return response.data;
@@ -33,7 +34,7 @@ export default function FormStepFour(): React.ReactNode {
       console.error("Submission error:", {
         message: error.message,
         response: error.response?.data,
-        status: error.response?.status
+        status: error.response?.status,
       });
       setIsSubmitting(false);
     },
@@ -61,17 +62,14 @@ export default function FormStepFour(): React.ReactNode {
         >
           Return to Form
         </Button>
-        <Button 
-          onClick={handleSubmit}
-          disabled={isSubmitting}
-        >
+        <Button onClick={handleSubmit} disabled={isSubmitting}>
           {isSubmitting ? (
             <span className="flex items-center gap-2">
               <span className="animate-spin">⏳</span>
               Submitting...
             </span>
           ) : (
-            'Submit Request'
+            "Submit Request"
           )}
         </Button>
       </div>
