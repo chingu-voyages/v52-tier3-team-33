@@ -21,7 +21,8 @@
       "@/*": ["./src/*"]
     },
     "target": "es5",
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node"]
   },
   "include": [
     "next-env.d.ts",
