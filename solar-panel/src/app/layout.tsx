@@ -24,6 +24,10 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Solar Panel App",
   description: "Solar Panel Management System",
+  icons: [
+    { rel: "icon", url: "/favicon.ico" },
+    { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
+  ],
 };
 
 export default function RootLayout({
@@ -33,6 +37,10 @@ export default function RootLayout({
 }>): React.ReactNode {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      </head>
       <body
         className={cn(
           "flex min-h-screen flex-col antialiased",

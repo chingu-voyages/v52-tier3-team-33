@@ -1,53 +1,123 @@
-# Solar Panel Project
+# Solar Panel Evaluation Platform
 
-A web application for monitoring and managing solar panel systems, built with [Next.js](https://nextjs.org).
+A comprehensive web application for managing solar panel evaluations and installations in Los Angeles, built with Next.js 14.
 
 ## Features
 
-- Real-time solar panel performance monitoring
-- Energy production analytics
-- System health diagnostics
-- Weather integration for performance forecasting
+### Public User Features
+- **Solar Evaluation Request System**
+  - Multi-step evaluation form
+  - Real-time form validation
+  - Automated request ID generation
+  - Progress tracking system
 
-## Getting Started
+- **Property Assessment**
+  - Location eligibility checking
+  - Property type compatibility
+  - Roof condition assessment
+  - Shading analysis requirements
 
-First, run the development server:
+- **Scheduling System**
+  - Flexible appointment scheduling
+  - Time slot selection
+  - Automated confirmation emails
+  - Request status tracking
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Admin Features
+- **Dashboard Analytics**
+  - Real-time evaluation metrics
+  - Request status overview
+  - Conversion rate tracking
+  - Performance statistics
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Evaluation Management**
+  - Detailed request viewing
+  - Status updates
+  - Note-taking system
+  - Customer communication tools
+
+- **Property Assessment Tools**
+  - Location verification
+  - Document management
+  - Requirements checklist
+  - Assessment reports
 
 ## Technology Stack
 
-- **Frontend**: Next.js with TypeScript
-- **Styling**: [Geist](https://vercel.com/font) font family and modern CSS
-- **Deployment**: Vercel
+- **Frontend**: Next.js 14 with TypeScript
+- **UI Components**: Custom components with Radix UI
+- **Styling**: Tailwind CSS with custom configurations
+- **State Management**: Zustand
+- **Form Handling**: React Hook Form with Zod validation
+- **Database**: Supabase
+- **Authentication**: Supabase Auth
+- **API Integration**: Axios & React Query
 
-## Development
+## Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-## Learn More
+```bash
+git clone https://github.com/yourusername/solar-panel-platform.git
+```
 
-To learn more about the technologies used in this project:
+2. Install dependencies:
+```bash
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
 
-## Deployment
+4. Run the development server:
+```bash
+npm run dev
+```
 
-This project is optimized for deployment on the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── admin/         # Admin dashboard and management
+│   ├── public/        # Public-facing pages
+│   └── api/          # API routes
+├── components/
+│   ├── ui/           # Reusable UI components
+│   └── features/     # Feature-specific components
+├── stores/           # State management
+└── types/           # TypeScript definitions
+```
+
+## Development Commands
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npm run format:all   # Format code with Prettier
+```
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgments
+
+- Next.js team for the amazing framework
+- Vercel for hosting and deployment
+- Supabase for backend services
+- All contributors who have helped shape this project

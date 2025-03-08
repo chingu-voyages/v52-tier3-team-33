@@ -1,0 +1,3 @@
+
+# Ignore .secret-stack folder
+.secret-stack
